@@ -13,7 +13,7 @@ def list_live_events(elemental_ip):
 	return response.status_code
 	
 def cue_command(elemental_ip, stream_id, command):
-	endpoint = '/api/live_events/' + stream_id + '/cue_point/'
+	endpoint = '/api/live_events/' + str(stream_id) + '/cue_point/'
 	myheaders = {'Accept': 'application/xml', 'Content-type': 'application/xml'}
 	if command == 'start_cue':
 		body = {

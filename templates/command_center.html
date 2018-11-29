@@ -4,20 +4,16 @@
 <center>
 
 	
-	{% for index in range(forms | count) %}
-	<form id = gpiCtrl_{{index}} action="{{url_for('gpiCtrl')}}" method="post" novalidate>
-		<input type ="hidden" name="which-form" value = "form_{{index}}">
-		{{ forms[index].csrf_token() }}
-		{{ forms[index].form_id }}
-		{{ forms[index].gpi_id.stream_id.label }} {{ forms[index].gpi_id.stream_id }}
-		{{ forms[index].gpi_id.setbut(class="toggle", size=32) }}
 
-
-		{{ forms[index].active(size=32) }}		
-		{{ forms[index].testbut(size=32) }} {{ forms[index].logbut(size=32) }}
+	<form id = gpiCtrl_{{index}} action="{{url_for('gpi_ctrl')}}" method="post" novalidate>
+		<meta name="csrf-token" content="{{ csrf_token() }}">
+		{{ form.stream_id.label }} {{ form.stream_id }}
+		{{ form.btn_set(class="toggle", size=32) }}
+		{{ form.btn_ss_cue(class="toggle", size=32) }}
+	
 	</form>
 	</br>	
-	{% endfor %}
+
 	
 </center>
 

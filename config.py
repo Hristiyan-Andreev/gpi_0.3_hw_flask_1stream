@@ -12,7 +12,7 @@ elemental_ip = '192.168.2.3'
 
 	#Mapper of GPI inputs to Elemental live streams
 gpi2stream = {
-		str(GPI_1): '5'
+		str(GPI_1): '6'
 }
 
 	#Time to wait after edge detection

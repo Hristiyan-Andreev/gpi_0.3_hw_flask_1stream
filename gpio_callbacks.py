@@ -4,7 +4,8 @@ import RPi.GPIO as GPIO
 
 # Config files
 import config as cf
-
+# Elemental Live API commands
+import liveapi
 # Setup GPIO inputs/outputs
 	#Use Board pin numbering - etc. (12) in pinout command
 GPIO.setmode(GPIO.BOARD)
@@ -21,7 +22,7 @@ def start_stop_avail(gpi):
 		if state == 1:
 			print("Stopping cue")
 			startime = time.time()
-			liveapi.cue_command(cf.elemental_ip, gpi2stream[str(gpi)], 'stop_cue')
+			liveapi.cue_command(cf.elemental_ip, cf.gpi2stream[str(gpi)], 'stop_cue')
 			print("Reaction time: " + str(time.time() - startime))
 			state = 0
 			time.sleep(cf.wait_time)
@@ -29,7 +30,7 @@ def start_stop_avail(gpi):
 		if state == 0:
 			print("Starting cue")
 			startime = time.time()
-			liveapi.cue_command(cf.elemental_ip, gpi2stream[str(gpi)], 'start_cue')			
+			liveapi.cue_command(cf.elemental_ip, cf.gpi2stream[str(gpi)], 'start_cue')			
 			print("Reaction time: " + str(time.time() - startime))
 			state = 1
 			time.sleep(cf.wait_time)
